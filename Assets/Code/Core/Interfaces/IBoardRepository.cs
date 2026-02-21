@@ -1,4 +1,4 @@
-using CardMatch.Core.Domain.Board;
+using CardMatch.Core.Domain.Boards;
 
 namespace CardMatch.Core.Interfaces
 {

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using CardMatch.Core.Domain.Card;
-namespace CardMatch.Core.Domain.Board
+namespace CardMatch.Core.Domain.Boards
 {
     public sealed class Board
     {
