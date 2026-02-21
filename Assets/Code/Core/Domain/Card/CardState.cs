@@ -1,18 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class CardState : MonoBehaviour
+namespace CardMatch.Core.Domain.Card
 {
-    // Start is called before the first frame update
-    void Start()
+    public enum CardState
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        FaceDown,
+        FlippingUp,
+        Revealed,
+        FlippingDown,
+        Locked
     }
 }

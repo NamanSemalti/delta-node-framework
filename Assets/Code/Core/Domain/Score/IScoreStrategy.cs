@@ -1,18 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using CardMatch.Core.Domain.Match;
 
-public class IScoreStrategy : MonoBehaviour
+namespace CardMatch.Core.Domain.Score
 {
-    // Start is called before the first frame update
-    void Start()
+    public interface IScoreStrategy
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        int CalculateScore(MatchResult result, int comboCount);
     }
 }

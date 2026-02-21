@@ -1,18 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class MatchResult : MonoBehaviour
+namespace CardMatch.Core.Domain.Match
 {
-    // Start is called before the first frame update
-    void Start()
+    public enum MatchResult
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Match,
+        Mismatch
     }
 }

@@ -1,18 +1,21 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
+using System.Linq;
+using CardMatch.Core.Domain.Card;
 
-public class MatchEvaluation : MonoBehaviour
+namespace CardMatch.Core.Domain.Match
 {
-    // Start is called before the first frame update
-    void Start()
+    public sealed class MatchEvaluation
     {
-        
-    }
+        public IReadOnlyList<Card.Card> Cards { get; }
+        public MatchResult Result { get; }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public MatchEvaluation(IReadOnlyList<Card.Card> cards)
+        {
+            Cards = cards;
+
+            Result = cards.All(c => c.MatchKey == cards[0].MatchKey)
+                ? MatchResult.Match
+                : MatchResult.Mismatch;
+        }
     }
 }

@@ -1,18 +1,31 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-
-public class Board : MonoBehaviour
+using System.Linq;
+using CardMatch.Core.Domain.Card;
+namespace CardMatch.Core.Domain.Board
 {
-    // Start is called before the first frame update
-    void Start()
+    public sealed class Board
     {
-        
-    }
+        public int Rows { get; }
+        public int Columns { get; }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        private readonly List<Card.Card> _cards;
+        public IReadOnlyList<Card.Card> Cards => _cards;
+
+        public Board(int rows, int columns, List<Card.Card> cards)
+        {
+            Rows = rows;
+            Columns = columns;
+            _cards = cards;
+        }
+
+        public Card.Card GetCardById(int id)
+        {
+            return _cards.FirstOrDefault(c => c.Id == id);
+        }
+
+        public IEnumerable<Card.Card> GetRevealedCards()
+        {
+            return _cards.Where(c => c.State == CardState.Revealed);
+        }
     }
 }
