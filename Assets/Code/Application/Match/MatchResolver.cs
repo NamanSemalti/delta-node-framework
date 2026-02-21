@@ -26,8 +26,7 @@ namespace CardMatch.Application.Match
                 return;
 
             card.StartFlipUp();
-            _eventBus.Publish(new CardRevealed(card));
-
+            _eventBus.Publish(new CardFlipStarted(card));
             card.Reveal();
             _revealedCards.Add(card);
 

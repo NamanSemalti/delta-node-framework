@@ -19,7 +19,7 @@ namespace CardMatch.Presentation.Views
             _card = card;
             _eventBus = eventBus;
 
-            _eventBus.Subscribe<CardRevealed>(OnCardRevealed);
+            _eventBus.Subscribe<CardFlipStarted>(OnCardFlipStarted);
             _eventBus.Subscribe<MatchResolved>(OnMatchResolved);
         }
 
@@ -27,7 +27,7 @@ namespace CardMatch.Presentation.Views
         {
             if (_eventBus == null) return;
 
-            _eventBus.Unsubscribe<CardRevealed>(OnCardRevealed);
+            _eventBus.Unsubscribe<CardFlipStarted>(OnCardFlipStarted);
             _eventBus.Unsubscribe<MatchResolved>(OnMatchResolved);
         }
 
@@ -38,15 +38,20 @@ namespace CardMatch.Presentation.Views
             StopAllCoroutines();
             StartCoroutine(FlipUp());
         }
+        private void OnCardFlipStarted(CardFlipStarted evt)
+        {
+            if (evt.Card != _card) return;
 
+            StopAllCoroutines();
+            StartCoroutine(FlipUp());
+        }
         private void OnMatchResolved(MatchResolved evt)
         {
             if (!evt.Cards.Contains(_card)) return;
 
-            if (_card.State == CardState.Locked)
+            if (_card.State == CardState.FlippingDown || _card.State == CardState.FaceDown)
                 return;
 
-            StopAllCoroutines();
             StartCoroutine(FlipDown());
         }
 

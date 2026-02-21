@@ -13,9 +13,17 @@ namespace CardMatch.Presentation.Views
 
         public void Build(Board board, IMatchResolver resolver, IEventBus eventBus)
         {
+            float spacing = 10f;
+
+            float totalWidth =
+                container.rect.width - spacing * (board.Columns - 1);
+            float totalHeight =
+                container.rect.height - spacing * (board.Rows - 1);
+
+            float cardWidth = totalWidth / board.Columns;
+            float cardHeight = totalHeight / board.Rows;
+
             int index = 0;
-            float cardWidth = container.rect.width / board.Columns;
-            float cardHeight = container.rect.height / board.Rows;
 
             foreach (var card in board.Cards)
             {
@@ -25,11 +33,15 @@ namespace CardMatch.Presentation.Views
                 int row = index / board.Columns;
                 int col = index % board.Columns;
 
+                rect.anchorMin = rect.anchorMax = new Vector2(0, 1);
+                rect.pivot = new Vector2(0, 1);
+
                 rect.sizeDelta = new Vector2(cardWidth, cardHeight);
-                rect.anchoredPosition = new Vector2(
-                    col * cardWidth,
-                    -row * cardHeight
-                );
+
+                float x = col * (cardWidth + spacing);
+                float y = -row * (cardHeight + spacing);
+
+                rect.anchoredPosition = new Vector2(x, y);
 
                 cardView.Initialize(card, eventBus);
 
