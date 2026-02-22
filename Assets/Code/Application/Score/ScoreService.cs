@@ -2,6 +2,7 @@ using CardMatch.Core.Domain.Match;
 using CardMatch.Core.Domain.Score;
 using CardMatch.Core.Events;
 using CardMatch.Core.Interfaces;
+using UnityEngine;
 
 namespace CardMatch.Application.Score
 {
@@ -34,7 +35,7 @@ namespace CardMatch.Application.Score
 
             _eventBus.Publish(new ComboChanged(_combo));
 
-            Score += _scoreStrategy.CalculateScore(evt.Result, _combo);
+            Score = Mathf.Max(0, Score + _scoreStrategy.CalculateScore(evt.Result, _combo));
             _eventBus.Publish(new ScoreChanged(Score));
         }
     }
