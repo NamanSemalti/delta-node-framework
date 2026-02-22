@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d200d8145f39e03469922cb872b8e437, type: 3}
   m_Name: AudioConfig
   m_EditorClassIdentifier: 
-  CardFlip: {fileID: 0}
-  Match: {fileID: 0}
-  Mismatch: {fileID: 0}
+  CardFlip: {fileID: 8300000, guid: f4c27b6a45de04046aa8234bec96b69e, type: 3}
+  Match: {fileID: 8300000, guid: 36723a06b30f48c4ca70f5b22232ac2f, type: 3}
+  Mismatch: {fileID: 8300000, guid: 4520b4792bc3049458abbd7d99c91e83, type: 3}
   GameOver: {fileID: 0}
