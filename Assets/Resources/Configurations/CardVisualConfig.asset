@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9707d7d2c02ce2140bf63b4388835cd0, type: 3}
+  m_Name: CardVisualConfig
+  m_EditorClassIdentifier: 
+  CardBack: {fileID: 21300000, guid: 861dccb971580ad4ea1fe97d024e669d, type: 3}
+  Visuals:
+  - MatchKey: 0
+    Sprite: {fileID: 21300000, guid: e54167f81d35e844fad5f2532fdbefb7, type: 3}
+  - MatchKey: 1
+    Sprite: {fileID: 21300000, guid: 6fbdff6731af6de4bac7a8ec828c8da6, type: 3}
+  - MatchKey: 2
+    Sprite: {fileID: 21300000, guid: f6214277fec9a5d42bca11204def1cf6, type: 3}
+  - MatchKey: 3
+    Sprite: {fileID: 21300000, guid: 05666f8df906c7a44b63c04d60792e28, type: 3}
+  - MatchKey: 4
+    Sprite: {fileID: 21300000, guid: d041a4d543ed6d94a8d5025221e807b7, type: 3}
+  - MatchKey: 5
+    Sprite: {fileID: 21300000, guid: a0940b4f4eaa1c84a95ef17c7b47bde6, type: 3}
+  - MatchKey: 6
+    Sprite: {fileID: 21300000, guid: 03d26e3187d425f42bcf6d80e46f3400, type: 3}

@@ -250,6 +250,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   container: {fileID: 1033821523}
   cardPrefab: {fileID: 7113480685795484458, guid: 077ddbad6936fe14f8c14bededb05677, type: 3}
+  cardVisualConfig: {fileID: 11400000, guid: d628f89191c353548a3bd07015bfd835, type: 2}
 --- !u!224 &802063004
 RectTransform:
   m_ObjectHideFlags: 0
@@ -367,6 +368,7 @@ MonoBehaviour:
   boardConfig: {fileID: 11400000, guid: f37e32a967925954182221ced308e22f, type: 2}
   audioConfig: {fileID: 11400000, guid: b0306ae6b2baeff4eb4eed71569cdd65, type: 2}
   scoreConfig: {fileID: 11400000, guid: c857719baf70e5548bfa4090dcc29135, type: 2}
+  initialPreviewDuration: 1.5
 --- !u!4 &840480102
 Transform:
   m_ObjectHideFlags: 0

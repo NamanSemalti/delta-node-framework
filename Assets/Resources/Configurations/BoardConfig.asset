@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b602afce777a7b4a9f936277cfa17aa, type: 3}
   m_Name: BoardConfig
   m_EditorClassIdentifier: 
-  Rows: 2
-  Columns: 3
+  Rows: 3
+  Columns: 4

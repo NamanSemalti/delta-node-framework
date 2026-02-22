@@ -3,6 +3,8 @@ using CardMatch.Core.Domain.Boards;
 using CardMatch.Core.Interfaces;
 using CardMatch.Presentation.Controllers;
 using CardMatch.Presentation.Views;
+using CardMatch.Configs;
+using System.Collections.Generic;
 
 namespace CardMatch.Presentation.Views
 {
@@ -10,7 +12,8 @@ namespace CardMatch.Presentation.Views
     {
         [SerializeField] private RectTransform container;
         [SerializeField] private CardView cardPrefab;
-
+        [SerializeField] private CardVisualConfigSO cardVisualConfig;
+        private readonly List<CardView> _cardViews = new();
         public void Build(Board board, IMatchResolver resolver, IEventBus eventBus)
         {
             float spacing = 10f;
@@ -28,6 +31,7 @@ namespace CardMatch.Presentation.Views
             foreach (var card in board.Cards)
             {
                 var cardView = Instantiate(cardPrefab, container);
+                _cardViews.Add(cardView);
                 var rect = cardView.GetComponent<RectTransform>();
 
                 int row = index / board.Columns;
@@ -43,13 +47,19 @@ namespace CardMatch.Presentation.Views
 
                 rect.anchoredPosition = new Vector2(x, y);
 
-                cardView.Initialize(card, eventBus);
+                cardView.Initialize(card, eventBus, cardVisualConfig);
 
                 var input = cardView.gameObject.AddComponent<CardInputController>();
                 input.Initialize(card, resolver);
 
                 index++;
             }
+
+        }
+        public void PreviewAllCards(float duration)
+        {
+            foreach (var view in _cardViews)
+                view.Preview(duration);
         }
     }
 }

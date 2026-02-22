@@ -9,6 +9,7 @@ using CardMatch.Presentation.Audio;
 using CardMatch.Presentation.Views;
 using CardMatch.Core.Domain.Score;
 using CardMatch.Core.Domain.Boards;
+using System.Collections;
 
 namespace CardMatch.Bootstrap
 {
@@ -22,6 +23,9 @@ namespace CardMatch.Bootstrap
         [SerializeField] private BoardConfigSO boardConfig;
         [SerializeField] private AudioConfigSO audioConfig;
         [SerializeField] private ScoreConfigSO scoreConfig;
+
+        [Header("Values")]
+        [SerializeField] private float initialPreviewDuration = 1f;
 
         private void Awake()
         {
@@ -47,7 +51,7 @@ namespace CardMatch.Bootstrap
 
             // 4. Build board UI
             boardView.Build(board, matchResolver, eventBus);
-
+            StartCoroutine(InitialPreview());
             // 5. Audio system
             _ = new AudioService(audioSource, audioConfig, eventBus);
 
@@ -56,6 +60,11 @@ namespace CardMatch.Bootstrap
             {
                 boardRepository.Save(board, scoreService.Score);
             });
+        }
+        private IEnumerator InitialPreview()
+        {
+            yield return null; // wait 1 frame so layout is ready
+            boardView.PreviewAllCards(initialPreviewDuration);
         }
     }
 }
