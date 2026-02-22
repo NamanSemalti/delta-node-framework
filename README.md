@@ -78,7 +78,7 @@ All major gameplay values can be changed using ScriptableObjects.
 ### 1️⃣ Board Configuration
 
 **Asset:** `BoardConfigSO`  
-**Path:** `Assets/Configs/BoardConfig.asset`
+**Path:** `Assets/Resources/Configurations/BoardConfig.asset`
 
 Controls the grid size.
 
