@@ -13,10 +13,14 @@ namespace CardMatch.Application.Score
         private int _combo;
         public int Score { get; private set; }
 
-        public ScoreService(IScoreStrategy scoreStrategy, IEventBus eventBus)
+        public ScoreService(
+            IScoreStrategy scoreStrategy,
+            IEventBus eventBus,
+            int initialScore = 0)
         {
             _scoreStrategy = scoreStrategy;
             _eventBus = eventBus;
+            Score = initialScore;
 
             _eventBus.Subscribe<MatchResolved>(OnMatchResolved);
         }
@@ -28,8 +32,9 @@ namespace CardMatch.Application.Score
             else
                 _combo = 0;
 
-            Score += _scoreStrategy.CalculateScore(evt.Result, _combo);
+            _eventBus.Publish(new ComboChanged(_combo));
 
+            Score += _scoreStrategy.CalculateScore(evt.Result, _combo);
             _eventBus.Publish(new ScoreChanged(Score));
         }
     }

@@ -24,6 +24,10 @@ namespace CardMatch.Bootstrap
         [SerializeField] private AudioConfigSO audioConfig;
         [SerializeField] private ScoreConfigSO scoreConfig;
 
+        [Header("Views")]
+        [SerializeField] private ScoreView scoreView;
+        [SerializeField] private ComboView comboView;
+
         [Header("Values")]
         [SerializeField] private float initialPreviewDuration = 1f;
 
@@ -35,7 +39,7 @@ namespace CardMatch.Bootstrap
 
             // 2. Domain / Application services
             var scoreStrategy = new BasicScoreStrategy();
-            var scoreService = new ScoreService(scoreStrategy, eventBus);
+
 
             var matchResolver = new MatchResolver(eventBus);
             var boardFactory = new BoardFactory();
@@ -48,7 +52,9 @@ namespace CardMatch.Bootstrap
                     boardConfig.Columns
                 );
             }
-
+            var scoreService = new ScoreService(scoreStrategy, eventBus, savedScore);
+            scoreView.Initialize(eventBus, scoreService.Score);
+            comboView.Initialize(eventBus);
             // 4. Build board UI
             boardView.Build(board, matchResolver, eventBus);
             StartCoroutine(InitialPreview());
