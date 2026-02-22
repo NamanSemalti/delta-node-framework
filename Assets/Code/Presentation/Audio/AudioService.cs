@@ -19,11 +19,11 @@ namespace CardMatch.Presentation.Audio
             _audioSource = audioSource;
             _config = config;
 
-            eventBus.Subscribe<CardRevealed>(OnCardRevealed);
+            eventBus.Subscribe<CardFlipStarted>(OnCardFlipStarted);
             eventBus.Subscribe<MatchResolved>(OnMatchResolved);
         }
 
-        private void OnCardRevealed(CardRevealed evt)
+        private void OnCardFlipStarted(CardFlipStarted evt)
         {
             Play(_config.CardFlip);
         }
