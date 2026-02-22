@@ -40,43 +40,6 @@ This project was developed as an assignment with a strong emphasis on:
 
 Scoring and combo logic are fully event-driven and completely decoupled from UI.
 
----
-
-## 🏗️ Project Architecture
-
-The project follows **Clean Architecture** principles.
-
-Assets/
-├── Application/ # Game rules & orchestration
-│ ├── Match/
-│ ├── Score/
-│ └── Game/
-│
-├── Core/ # Pure domain logic (no Unity dependencies)
-│ ├── Domain/
-│ │ ├── Card/
-│ │ ├── Boards/
-│ │ └── Score/
-│ ├── Events/
-│ └── Interfaces/
-│
-├── Infrastructure/ # External systems & implementations
-│ ├── EventBus/
-│ └── Persistence/
-│
-├── Presentation/ # Unity-specific UI, visuals & input
-│ ├── Views/
-│ ├── Controllers/
-│ └── Audio/
-│
-├── Bootstrap/ # Composition root (object wiring)
-│
-├── Configs/ # ScriptableObject configurations
-│
-├── Art/ # Card sprites & visual assets
-└── Scenes/
-
-
 ### Layer Responsibilities
 
 | Layer | Responsibility |
